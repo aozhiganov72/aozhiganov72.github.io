@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Будильник на JavaScript</title>
+    <title>Будильник</title>
     <style>
         body {
             background-color: #93AC9D;
@@ -61,7 +61,7 @@
         const timeDisplay = document.getElementById('timeDisplay');
         
         let alarmTimeout;
-        let alarmAudio = new Audio('DEXP.mp3');
+        let alarmAudio = new Audio('http://95.182.123.24:8000/transmit');
         
         // Обновление текущего времени каждую секунду
         function updateTime() {
