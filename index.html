@@ -6,18 +6,20 @@
 </head>
 <style>
 .container {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
-  width: 100%;
-  padding-top: 56.25%; /* Соотношение сторон 16:9 (вычислите 9/16 = 0.5625) */
+  padding: 0; 
+  margin: 0;
 }
 
 .container iframe {
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
   width: 100%;
   height: 100%;
 }
