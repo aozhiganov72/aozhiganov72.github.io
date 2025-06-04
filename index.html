@@ -5,24 +5,29 @@
 <title>Главная</title>
 </head>
 <style>
-  body{ 
-    margin: 0; 
-    height: 100%; 
-    background-color: black;
-  }
-  iframe { 
-    position: absolute;
-    width: 100%; 
-    height: 800px; 
-    border: none; 
-  }
+.container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* Соотношение сторон 16:9 (вычислите 9/16 = 0.5625) */
+}
+
+.container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
 </style>
 <body>
 	<ul>
 	<li><button><a href="alarm.html" target="window">Будильник</a></button></li>
 	<li><button><a href="https://webhamster.ru/mytetrashare/index/https:~~raw.githubusercontent.com~aozhiganov72~alco~refs~heads~main~mytetra.xml" target="window">Коллекция рецептов</a></button></li>
     </ul>
-    <iframe name="window" src="alarm.html"></iframe> 
+    <div class=container><iframe name="window" src="alarm.html"></iframe> </div>
 </body>
 
 </html>
