@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Будильник</title>
+    <style>
+        body {
+            background-color: #93AC9D;
+            font-family: DejaVu serif, sans-serif;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 16px;
+        }
+        .container {
+            max-width: 180px;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid red;
+            border-radius: 10px;
+            background-color: #DDFF55;
+            box-shadow: 5px 5px 20px rgba(0,0,255,80%);
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 10px;
+        }
+        #alarmStatus {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        #timeDisplay {
+            font-size: 16px;
+            font-weight: bold;
+            color: #0066FF;
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Будильник</h2>
+        <h3>Время:</h3>
+<div id="currentTime"><span id="timeDisplay"></span></div>
+        <div>
+            <label for="alarmTime">Установите время будильника: </label>
+            <input type="time" id="alarmTime" required>
+        </div>
+        <div>
+            <button id="setAlarm">Установить будильник</button>
+            <button id="stopAlarm" disabled>Отключить</button>
+        </div>
+        <div id="alarmStatus">Будильник не установлен</div>
+    </div>
+
+    <script>
+        // Элементы DOM
+        const alarmTimeInput = document.getElementById('alarmTime');
+        const setAlarmBtn = document.getElementById('setAlarm');
+        const stopAlarmBtn = document.getElementById('stopAlarm');
+        const alarmStatus = document.getElementById('alarmStatus');
+        const timeDisplay = document.getElementById('timeDisplay');
+        
+        let alarmTimeout;
+        let alarmAudio = new Audio('https://github.com/aozhiganov72/aozhiganov72.github.io/blob/e8964741b5872c008c7bb0902bbc518ee68dc5ec/alarm.mp3?raw=true');
+        
+        // Обновление текущего времени каждую секунду
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            timeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        
+        setInterval(updateTime, 1000);
+        updateTime(); // Инициализация сразу
+        
+        // Установка будильника
+        setAlarmBtn.addEventListener('click', () => {
+            const alarmTimeValue = alarmTimeInput.value;
+            if (!alarmTimeValue) {
+                alert('Пожалуйста, установите время будильника');
+                return;
+            }
+            
+            const [hours, minutes] = alarmTimeValue.split(':');
+            const now = new Date();
+            const alarmTime = new Date();
+            
+            alarmTime.setHours(parseInt(hours));
+            alarmTime.setMinutes(parseInt(minutes));
+            alarmTime.setSeconds(0);
+            
+            // Если время уже прошло сегодня, установить на завтра
+            if (alarmTime <= now) {
+                alarmTime.setDate(alarmTime.getDate() + 1);
+            }
+            
+            const timeUntilAlarm = alarmTime - now;
+            
+            // Очищаем предыдущий таймаут, если он есть
+            if (alarmTimeout) {
+                clearTimeout(alarmTimeout);
+            }
+            
+            alarmTimeout = setTimeout(() => {
+                alarmAudio.loop = true;
+                alarmAudio.play();
+                alarmStatus.textContent = 'Будильник сработал!';
+                stopAlarmBtn.disabled = false;
+                setAlarmBtn.disabled = true;
+            }, timeUntilAlarm);
+            
+            const alarmTimeString = alarmTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            alarmStatus.textContent = `Будильник установлен на ${alarmTimeString}`;
+            setAlarmBtn.disabled = true;
+            stopAlarmBtn.disabled = false;
+        });
+        
+        // Остановка будильника
+        stopAlarmBtn.addEventListener('click', () => {
+            alarmAudio.pause();
+            alarmAudio.currentTime = 0;
+            alarmStatus.textContent = 'Будильник отключен';
+            setAlarmBtn.disabled = false;
+            stopAlarmBtn.disabled = true;
+        });
+    </script>
+</body>
+  </html>
