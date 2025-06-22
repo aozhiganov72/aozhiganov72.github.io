@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>-</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<p>В Python (и многих других языках программирования) символ
+<code>\n</code> обозначает <strong>перенос строки</strong> (newline).
+Когда он используется в начале f-строки, это означает, что вывод будет
+начинаться с новой строки.</p>
+<h3 id="примеры-и-пояснения"><strong>Примеры и пояснения:</strong></h3>
+<h4 id="n-в-начале-f-строки">1. <strong><code>\n</code> в начале
+f-строки</strong></h4>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Привет, мир!&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text)</span></code></pre></div>
+<p><strong>Вывод:</strong></p>
+<pre><code>[пустая строка]
+Привет, мир!</code></pre>
+<p>👉 Здесь <code>\n</code> добавляет пустую строку перед текстом.</p>
+<hr />
+<h4 id="n-в-середине-f-строки">2. <strong><code>\n</code> в середине
+f-строки</strong></h4>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">&quot;Анна&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="ss">f&quot;Привет,</span><span class="ch">\n</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text)</span></code></pre></div>
+<p><strong>Вывод:</strong></p>
+<pre><code>Привет,
+Анна!</code></pre>
+<p>👉 Перенос строки разделяет текст на две части.</p>
+<hr />
+<h4 id="n-в-конце-f-строки">3. <strong><code>\n</code> в конце
+f-строки</strong></h4>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="ss">f&quot;Конец строки</span><span class="ch">\n</span><span class="ss">&quot;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text <span class="op">+</span> <span class="st">&quot;Новая строка&quot;</span>)</span></code></pre></div>
+<p><strong>Вывод:</strong></p>
+<pre><code>Конец строки
+Новая строка</code></pre>
+<p>👉 Перенос добавляется после текста.</p>
+<hr />
+<h3 id="зачем-это-нужно"><strong>Зачем это нужно?</strong></h3>
+<ol type="1">
+<li><strong>Форматирование вывода</strong> — чтобы текст выглядел
+аккуратно.<br />
+</li>
+<li><strong>Разделение логических блоков</strong> — например, между
+заголовком и содержимым.<br />
+</li>
+<li><strong>Совместимость с файлами</strong> — многие форматы (логи,
+CSV) используют <code>\n</code> для разделения строк.</li>
+</ol>
+<hr />
+<h3 id="особенности-f-строк"><strong>Особенности f-строк</strong></h3>
+<ul>
+<li><p><code>\n</code> работает <strong>только внутри кавычек</strong>
+(<code>"..."</code> или <code>'...'</code>).<br />
+</p></li>
+<li><p>Если нужно вставить символ <code>\</code> как текст, экранируйте
+его:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Символ: </span><span class="ch">\\</span><span class="ss">n&quot;</span>)  <span class="co"># Выведет: Символ: \n</span></span></code></pre></div></li>
+</ul>
+<hr />
+<h3 id="пример-из-реального-кода"><strong>Пример из реального
+кода</strong></h3>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>user <span class="op">=</span> <span class="st">&quot;Иван&quot;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>message <span class="op">=</span> <span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Данные пользователя:</span><span class="ch">\n</span><span class="ss">Имя: </span><span class="sc">{</span>user<span class="sc">}</span><span class="ch">\n</span><span class="ss">Возраст: </span><span class="sc">{</span>age<span class="sc">}</span><span class="ch">\n</span><span class="ss">&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(message)</span></code></pre></div>
+<p><strong>Вывод:</strong></p>
+<pre><code>[пустая строка]
+Данные пользователя:
+Имя: Иван
+Возраст: 25
+[пустая строка]</code></pre>
+<hr />
+<h3 id="вывод"><strong>Вывод</strong></h3>
+<p>Символ <code>\n</code> в начале f-строки добавляет пустую строку
+перед содержимым. Это полезно для:<br />
+- Чистого форматирования.<br />
+- Отделения вывода от предыдущего текста.<br />
+- Создания многострочных блоков.</p>
+<p>Если хочешь убрать пустую строку — просто удали <code>\n</code> в
+начале 😊.</p>
+</body>
+</html>
